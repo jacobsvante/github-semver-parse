@@ -13,5 +13,6 @@ import semverParse from "semver/functions/parse";
     core.setOutput("version", v.version);
   } else {
     core.setOutput("version", "");
+    core.setFailed(`Version "${version} isn't valid semver"`);
   }
 })();
