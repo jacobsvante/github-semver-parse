@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -33,7 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -64,24 +68,18 @@ var parse_1 = __importDefault(require("semver/functions/parse"));
     return __awaiter(this, void 0, void 0, function () {
         var version, v;
         return __generator(this, function (_a) {
-            try {
-                version = core.getInput("version");
-                v = parse_1.default(version);
-                if (v) {
-                    core.setOutput("major", v.major);
-                    core.setOutput("minor", v.minor);
-                    core.setOutput("patch", v.patch);
-                    core.setOutput("prerelease", v.prerelease.join("."));
-                    core.setOutput("build", v.build.join("."));
-                    core.setOutput("version", v.version);
-                }
-                else {
-                    core.setOutput("version", "");
-                }
+            version = core.getInput("version");
+            v = (0, parse_1.default)(version);
+            if (v) {
+                core.setOutput("major", v.major);
+                core.setOutput("minor", v.minor);
+                core.setOutput("patch", v.patch);
+                core.setOutput("prerelease", v.prerelease.join("."));
+                core.setOutput("build", v.build.join("."));
+                core.setOutput("version", v.version);
             }
-            catch (error) {
-                core.error(error);
-                core.setFailed(error.message);
+            else {
+                core.setOutput("version", "");
             }
             return [2 /*return*/];
         });
