@@ -1,6 +1,6 @@
 jest.mock("@actions/core");
 
-test("main test", async () => {
+test("complex test", async () => {
   const core = require("@actions/core");
   core.getInput.mockImplementationOnce((key: string) => {
     expect(key).toBe("version");
@@ -12,28 +12,28 @@ test("main test", async () => {
   await new Promise<void>((resolve) => setImmediate(() => resolve()));
 
   expect(core.setOutput.mock.calls).toMatchInlineSnapshot(`
-    Array [
-      Array [
+    [
+      [
         "major",
         1,
       ],
-      Array [
+      [
         "minor",
         12,
       ],
-      Array [
+      [
         "patch",
         123,
       ],
-      Array [
+      [
         "prerelease",
         "alpha.1",
       ],
-      Array [
+      [
         "build",
         "BUILD.ID",
       ],
-      Array [
+      [
         "version",
         "1.12.123-alpha.1",
       ],
