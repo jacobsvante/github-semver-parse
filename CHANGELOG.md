@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.2](https://github.com/jacobsvante/github-semver-parse/compare/v1.0.1...v1.0.2) (2024-05-30)
+
+
+### Bug Fixes
+
+* New release please ([2970b96](https://github.com/jacobsvante/github-semver-parse/commit/2970b96aae530a53dd92d7e08a5690cb938da415))
+* Update dependencies ([680f3ee](https://github.com/jacobsvante/github-semver-parse/commit/680f3ee1ae260dddc1fd6b152dc3e5328c26eb54))
+
 ## [1.0.1](https://github.com/jacobsvante/github-semver-parse/compare/v1.0.0...v1.0.1) (2024-05-30)
 
 
