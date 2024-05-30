@@ -1,17 +1,17 @@
 jest.mock("@actions/core");
 
 test("complex test", async () => {
-  const core = require("@actions/core");
-  core.getInput.mockImplementationOnce((key: string) => {
-    expect(key).toBe("version");
-    return "v1.12.123-alpha.1+BUILD.ID";
-  });
+    const core = require("@actions/core");
+    core.getInput.mockImplementationOnce((key: string) => {
+        expect(key).toBe("version");
+        return "v1.12.123-alpha.1+BUILD.ID";
+    });
 
-  require("./index");
+    require("./index");
 
-  await new Promise<void>((resolve) => setImmediate(() => resolve()));
+    await new Promise<void>((resolve) => setImmediate(() => resolve()));
 
-  expect(core.setOutput.mock.calls).toMatchInlineSnapshot(`
+    expect(core.setOutput.mock.calls).toMatchInlineSnapshot(`
     [
       [
         "major",

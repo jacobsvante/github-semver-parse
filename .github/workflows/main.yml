@@ -1,45 +1,45 @@
 name: Main
 
 on:
-  push:
-    branches:
-      - main
+    push:
+        branches:
+            - main
 
 env:
-  ACTION_NAME: github-semver-parse
+    ACTION_NAME: github-semver-parse
 
 jobs:
-  pre-commit:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.x"
-      - uses: pre-commit/action@v3.0.1
+    pre-commit:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-python@v5
+              with:
+                  python-version: "3.x"
+            - uses: pre-commit/action@v3.0.1
 
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - name: Install dependencies
-        run: yarn
-      - name: Clean
-        run: yarn clean
-      - name: Lint
-        run: yarn lint
-      - name: Test
-        run: yarn test
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Setup Node.js environment
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+            - name: Install dependencies
+              run: yarn
+            - name: Clean
+              run: yarn clean
+            - name: Lint
+              run: yarn lint
+            - name: Test
+              run: yarn test
 
-  release-pull-request:
-    runs-on: ubuntu-latest
-    needs: [pre-commit, test]
-    steps:
-      - uses: googleapis/release-please-action@v4
-        id: release
-        with:
-          skip-github-release: true
+    release-pull-request:
+        runs-on: ubuntu-latest
+        needs: [pre-commit, test]
+        steps:
+            - uses: googleapis/release-please-action@v4
+              id: release
+              with:
+                  skip-github-release: true
