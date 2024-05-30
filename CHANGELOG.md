@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/jacobsvante/github-semver-parse/compare/v1.0.0...v1.0.1) (2024-05-30)
+
+
+### Bug Fixes
+
+* Deprecation warnings ([040fc43](https://github.com/jacobsvante/github-semver-parse/commit/040fc43ad8cb1df80fecf981e9af6cd27535f715))
+
 ## 1.0.0 (2023-01-05)
 
 
